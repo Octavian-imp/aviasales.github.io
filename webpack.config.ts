@@ -243,16 +243,15 @@ module.exports = (env) => {
         },
       }),
       new CleanWebpackPlugin(),
-      // раскомментировать при первом запуске со статикой
-      // new CopyWebpackPlugin({
-      //   patterns: [
-      //     {
-      //       // for static files
-      //       from: path.resolve(__dirname, "src/assets"),
-      //       to: path.resolve(__dirname, "dist/assets"),
-      //     },
-      //   ],
-      // }),
+      new CopyWebpackPlugin({
+        patterns: [
+          {
+            // for static files
+            from: path.resolve(__dirname, "src/assets"),
+            to: path.resolve(__dirname, "dist/assets"),
+          },
+        ],
+      }),
       new MiniCssExtractPlugin({
         filename: "[name].[hash].css",
       }),

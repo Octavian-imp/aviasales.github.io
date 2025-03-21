@@ -1,0 +1,26 @@
+@use "../../utils/styles/pxToRem.scss" as *;
+
+@mixin stylesCheckbox{
+  label {
+    @include pxToRem(padding-top, 10);
+    @include pxToRem(padding-bottom, 10);
+    @apply px-5;
+    &:hover {
+      @apply bg-[#F1FCFF];
+    }
+  }
+}
+
+.container {
+  @apply bg-white gap-5 h-fit sticky top-4;
+  @include pxToRem(border-radius, 5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  .title {
+    @apply uppercase px-5 pt-5 font-semibold m-0 whitespace-nowrap;
+  }
+  @include stylesCheckbox();
+  .checkboxGroup {
+    @apply flex-col;
+    @include stylesCheckbox(); 
+  }
+}

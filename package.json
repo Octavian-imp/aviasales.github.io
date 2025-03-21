@@ -39,10 +39,7 @@
   "version": "1.0.0",
   "main": "postcss.config.js",
   "scripts": {
-    "dev:scss": "npx webpack serve --env MODE=development --config-name html-scss-js",
-    "dev:scss-tailwind": "npx webpack serve --env MODE=development --config-name html-scss-js-tailwind",
-    "dev:react-ts-modules": "npx webpack serve --env MODE=development --config-name react-ts-scss-cssModules",
-    "dev:react-ts-tw-modules": "npx webpack serve --env MODE=development --config-name react-ts-scss-cssModules-tailwind",
+    "dev": "npx webpack serve --env MODE=development --config-name react-ts-scss-cssModules-tailwind",
     "dev:build": "npx webpack serve --env MODE=production --config-name react-ts-scss-cssModules-tailwind",
     "build": "npx webpack --env MODE=prod --config-name react-ts-scss-cssModules-tailwind",
     "lint": "npx eslint . ",
@@ -56,10 +53,15 @@
   "browserslist": "> 0.25%, not dead",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@reduxjs/toolkit": "^2.6.1",
+    "antd": "^5.24.4",
+    "date-fns": "^4.1.0",
     "dotenv-webpack": "^8.1.0",
     "lucide": "^0.447.0",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.2.0",
+    "uuid": "^11.1.0"
   },
   "lint-staged": {
     "*.{js,ts,ts,tsx}": [

@@ -1,10 +1,17 @@
 module.exports = {
-  content: ["./dist/**/*.{html,js}", "./src/**/*.{html,js}"],
+  content: [
+    "./dist/**/*.{html,js,tsx,ts,scss}",
+    "./src/**/*.{html,js,tsx,ts,scss}",
+  ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#2196F3",
+      },
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [],
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
-};
+}

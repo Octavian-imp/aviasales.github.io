@@ -1,3 +1,12 @@
+@use "./utils/styles/pxToRem.scss" as *;
+
 .app {
-  background-color: red;
+  margin: 50px auto 0;
+  @include pxToRem(width, 754);
+  @include pxToRem(row-gap, 50);
+  @apply items-center flex-col;
+  .contentPage{
+    @apply flex justify-between w-full gap-5;
+    
+  }
 }

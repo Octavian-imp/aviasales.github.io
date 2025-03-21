@@ -1,0 +1,21 @@
+@use '../../utils/styles/pxToRem.scss' as *;
+
+.container{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    @apply bg-white p-5;
+    @include pxToRem(border-radius, 5);
+    .cost{
+        @apply text-primary text-2xl leading-6 font-semibold;
+    }
+    .imgCompany{
+        @include pxToRem(max-height, 36);
+    }
+    .descriptionTitle{
+        @include pxToRem(font-size, 12);
+        @apply text-gray-400 font-semibold uppercase;
+    }
+    .time{
+        @include pxToRem(font-size, 14);
+        @apply font-semibold;
+    }
+}
