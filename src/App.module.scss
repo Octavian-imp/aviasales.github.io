@@ -5,8 +5,7 @@
   @include pxToRem(width, 754);
   @include pxToRem(row-gap, 50);
   @apply items-center flex-col;
-  .contentPage{
+  .contentPage {
     @apply flex justify-between w-full gap-5;
-    
   }
 }

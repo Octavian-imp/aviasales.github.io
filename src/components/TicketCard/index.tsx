@@ -1,15 +1,15 @@
-import { Col, Flex, Image, Row } from "antd"
-import { addMinutes, format, formatDistanceStrict } from "date-fns"
-import { ru } from "date-fns/locale/ru"
-import React from "react"
-import { AviasalesApi } from "../../services/AviasalesApi"
-import { Tickets, TicketSegment } from "../../types/Tickets"
-import styles from "./index.module.scss"
+import { Col, Flex, Image, Row } from "antd";
+import { addMinutes, format, formatDistanceStrict } from "date-fns";
+import { ru } from "date-fns/locale/ru";
+import React from "react";
+import { v4 as uuidv4 } from "uuid";
+import { AviasalesApi } from "../../services/AviasalesApi";
+import { Tickets, TicketSegment } from "../../types/Tickets";
+import styles from "./index.module.scss";
 
-type TicketCardProps = Tickets
+type TicketCardProps = Tickets;
 
 const TicketCard = ({ price, carrier, segments }: TicketCardProps) => {
-  
   return (
     <Flex vertical gap={20} className={styles.container}>
       <Flex justify="space-between" align="center">
@@ -29,24 +29,25 @@ const TicketCard = ({ price, carrier, segments }: TicketCardProps) => {
       </Flex>
       {segments.map((segment) => (
         <TicketCard.SegmentTicket
+          key={uuidv4()}
           value={{
             ...segment,
           }}
         />
       ))}
     </Flex>
-  )
-}
+  );
+};
 
 type TicketSegmentProps = {
-  value: TicketSegment
-}
+  value: TicketSegment;
+};
 
 TicketCard.SegmentTicket = ({
   value: { date, destination, duration, origin, stops },
 }: TicketSegmentProps) => {
-  const dateStart = Date.parse(date)
-  const dateEnd = addMinutes(Date.parse(date), duration)
+  const dateStart = Date.parse(date);
+  const dateEnd = addMinutes(Date.parse(date), duration);
 
   return (
     <Row>
@@ -61,7 +62,8 @@ TicketCard.SegmentTicket = ({
       <Col flex={1}>
         <Row className={styles.descriptionTitle}>В пути</Row>
         <Row className={styles.time}>
-          ~{formatDistanceStrict(dateStart, dateEnd, {
+          ~
+          {formatDistanceStrict(dateStart, dateEnd, {
             locale: ru,
             unit: "hour",
           })}
@@ -72,17 +74,17 @@ TicketCard.SegmentTicket = ({
           {stops.length > 1
             ? `${stops.length} пересадки`
             : stops.length === 1
-            ? `${stops.length} пересадка`
-            : "Без пересадок"}
+              ? `${stops.length} пересадка`
+              : "Без пересадок"}
         </Row>
         <Row className={styles.time}>
           {stops.map((item, index) =>
-            index === stops.length - 1 ? item : item + ", "
+            index === stops.length - 1 ? item : item + ", ",
           )}
         </Row>
       </Col>
     </Row>
-  )
-}
+  );
+};
 
-export default TicketCard
+export default TicketCard;

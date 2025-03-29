@@ -1,29 +1,29 @@
-import { ConfigProvider, Flex, Image } from "antd"
-import { Content } from "antd/es/layout/layout"
-import React, { useEffect } from "react"
-import styles from "./App.module.scss"
-import Filter from "./components/Filter"
-import SortedOptions from "./components/SortedOptions"
-import TicketList from "./components/TicketList"
-import { fetchSearchId } from "./store/optionsSlice"
-import { fetchTickets } from "./store/ticketsSlice"
-import { useAppDispatch } from "./utils/store/redux"
+import { ConfigProvider, Flex, Image } from "antd";
+import { Content } from "antd/es/layout/layout";
+import React, { useEffect } from "react";
+import styles from "./App.module.scss";
+import Filter from "./components/Filter";
+import SortedOptions from "./components/SortedOptions";
+import TicketList from "./components/TicketList";
+import { fetchSearchId } from "./store/optionsSlice";
+import { fetchTickets } from "./store/ticketsSlice";
+import { useAppDispatch } from "./utils/store/redux";
 
 const App = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const init = async () => {
       try {
-        await dispatch(fetchSearchId())
-        await dispatch(fetchTickets())
-      } catch (error) {
-        console.log(error)
-      }
-    }
+        await dispatch(fetchSearchId());
 
-    init()
-  }, [])
+        await dispatch(fetchTickets());
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    init();
+  }, []);
 
   return (
     <ConfigProvider theme={{ hashed: false }}>
@@ -43,7 +43,7 @@ const App = () => {
         </Content>
       </Flex>
     </ConfigProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

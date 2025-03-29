@@ -45,7 +45,8 @@
     "lint": "npx eslint . ",
     "lint:fix": "npx eslint . --fix ",
     "format": "npx prettier --write ./src",
-    "migrate:linter": "npx @eslint/migrate-config .eslintrc.json"
+    "migrate:linter": "npx @eslint/migrate-config .eslintrc.json",
+    "prepare": "husky"
   },
   "author": "",
   "license": "ISC",

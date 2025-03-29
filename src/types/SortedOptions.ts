@@ -1,1 +1,1 @@
-export type SortType = "cheap" | "fast" | "optimal"
+export type SortType = "cheap" | "fast" | "optimal";

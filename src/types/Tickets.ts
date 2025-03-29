@@ -1,22 +1,22 @@
 export type Tickets = {
   // Цена в рублях
-  price: number
+  price: number;
   // Код авиакомпании (iata)
-  carrier: string
+  carrier: string;
   // Массив перелётов.
   // В тестовом задании это всегда поиск "туда-обратно" значит состоит из двух элементов
-  segments: Array<TicketSegment>
-}
+  segments: Array<TicketSegment>;
+};
 
 export type TicketSegment = {
   // Код города (iata)
-  origin: string
+  origin: string;
   // Код города (iata)
-  destination: string
+  destination: string;
   // Дата и время вылета туда
-  date: string
+  date: string;
   // Массив кодов (iata) городов с пересадками
-  stops: string[]
+  stops: string[];
   // Общее время перелёта в минутах
-  duration: number
-}
+  duration: number;
+};

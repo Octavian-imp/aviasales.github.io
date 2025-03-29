@@ -1,6 +1,6 @@
 @use "../../utils/styles/pxToRem.scss" as *;
 
-@mixin stylesCheckbox{
+@mixin stylesCheckbox {
   label {
     @include pxToRem(padding-top, 10);
     @include pxToRem(padding-bottom, 10);
@@ -21,6 +21,6 @@
   @include stylesCheckbox();
   .checkboxGroup {
     @apply flex-col;
-    @include stylesCheckbox(); 
+    @include stylesCheckbox();
   }
 }

@@ -1,14 +1,14 @@
-import { Checkbox, CheckboxOptionType, CheckboxProps, Flex } from "antd"
-import Title from "antd/es/typography/Title"
-import React from "react"
-import { setFilterTransplants } from "../../store/optionsSlice"
-import { useAppDispatch, useAppSelector } from "../../utils/store/redux"
-import styles from "./index.module.scss"
-import { applyFilters, fetchTickets } from "../../store/ticketsSlice"
+import { Checkbox, CheckboxOptionType, CheckboxProps, Flex } from "antd";
+import Title from "antd/es/typography/Title";
+import React from "react";
+import { setFilterTransplants } from "../../store/optionsSlice";
+import { fetchTickets } from "../../store/ticketsSlice";
+import { useAppDispatch, useAppSelector } from "../../utils/store/redux";
+import styles from "./index.module.scss";
 
-const CheckboxGroup = Checkbox.Group
+const CheckboxGroup = Checkbox.Group;
 
-type PlainType = CheckboxOptionType<number>
+type PlainType = CheckboxOptionType<number>;
 
 const plainOptions: Array<PlainType> = [
   {
@@ -27,31 +27,32 @@ const plainOptions: Array<PlainType> = [
     label: "3 пересадки",
     value: 3,
   },
-]
+];
 
 const Filter = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   const checkedListState = useAppSelector(
-    (state) => state.options.filterTransplants
-  )
+    (state) => state.options.filterTransplants,
+  );
 
-  const checkAll = plainOptions.length === checkedListState.length
+  const checkAll = plainOptions.length === checkedListState.length;
   const indeterminate =
-    checkedListState.length > 0 && checkedListState.length < plainOptions.length
+    checkedListState.length > 0 &&
+    checkedListState.length < plainOptions.length;
 
   const onChange = (list: number[]) => {
-    dispatch(setFilterTransplants(list))
-    dispatch(fetchTickets())
-  }
+    dispatch(setFilterTransplants(list));
+    dispatch(fetchTickets());
+  };
 
   const onCheckAllChange: CheckboxProps["onChange"] = (e) => {
     const checkedValue = e.target.checked
       ? plainOptions.map((opt) => opt.value)
-      : []
+      : [];
 
-    onChange(checkedValue)
-  }
+    onChange(checkedValue);
+  };
   return (
     <Flex vertical className={styles.container}>
       <Title level={5} className={styles.title}>
@@ -74,7 +75,7 @@ const Filter = () => {
         />
       </Flex>
     </Flex>
-  )
-}
+  );
+};
 
-export default Filter
+export default Filter;

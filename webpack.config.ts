@@ -200,6 +200,7 @@ module.exports = (env) => {
   }
 
   const mainConfigOptions: Configuration = {
+    devtool: isDev ? "source-map" : false,
     context: path.resolve(__dirname, "src"),
     entry: {
       main: ["@babel/polyfill", "./index.js"],

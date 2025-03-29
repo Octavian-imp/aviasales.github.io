@@ -1,10 +1,10 @@
-import { Radio } from "antd"
-import { CheckboxOptionType } from "antd/es/checkbox"
-import React from "react"
-import { setSortedBy } from "../../store/optionsSlice"
-import { SortType } from "../../types/SortedOptions"
-import { useAppDispatch, useAppSelector } from "../../utils/store/redux"
-import { applyFilters, fetchTickets } from "../../store/ticketsSlice"
+import { Radio } from "antd";
+import { CheckboxOptionType } from "antd/es/checkbox";
+import React from "react";
+import { getSortedBySelector, setSortedBy } from "../../store/optionsSlice";
+import { SortType } from "../../types/SortedOptions";
+import { useAppDispatch, useAppSelector } from "../../utils/store/redux";
+import { applyFilters, fetchTickets } from "../../store/ticketsSlice";
 
 const options: Array<CheckboxOptionType<SortType>> = [
   {
@@ -19,11 +19,11 @@ const options: Array<CheckboxOptionType<SortType>> = [
     label: "Оптимальный",
     value: "optimal",
   },
-]
+];
 
 const SortedOptions = () => {
-  const dispatch = useAppDispatch()
-  const defaultValue = useAppSelector((state) => state.options.sortedBy)
+  const dispatch = useAppDispatch();
+  const defaultValue = useAppSelector(getSortedBySelector);
 
   return (
     <Radio.Group
@@ -38,11 +38,11 @@ const SortedOptions = () => {
         textTransform: "uppercase",
       }}
       onChange={(e) => {
-        dispatch(setSortedBy(e.target.value))
-        dispatch(applyFilters())
+        dispatch(setSortedBy(e.target.value));
+        dispatch(applyFilters());
       }}
     />
-  )
-}
+  );
+};
 
-export default SortedOptions
+export default SortedOptions;

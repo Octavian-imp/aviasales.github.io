@@ -1,65 +1,78 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit"
-import { AviasalesApi } from "../services/AviasalesApi"
-import { SortType } from "../types/SortedOptions"
-import { AppState, createAppAsyncThunk } from "../utils/store/redux"
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { AviasalesApi } from "../services/AviasalesApi";
+import { SortType } from "../types/SortedOptions";
+import { AppState, createAppAsyncThunk } from "../utils/store/redux";
+import { fetchTickets } from "./ticketsSlice";
 
 type OptionsState = {
-  filterTransplants: number[]
-  sortedBy: SortType
-  searchId: string
-}
+  filterTransplants: number[];
+  sortedBy: SortType;
+  searchId: string;
+  limit: number;
+};
 
 export const fetchSearchId = createAppAsyncThunk(
   "options/fetchSearchId",
   async (): Promise<{ searchId: string }> => {
-    const response = await AviasalesApi.fetchSearchId()
-    return response
-  }
-)
+    const response = await AviasalesApi.fetchSearchId();
+    return response;
+  },
+);
 
-export const optionsSelector = (state: AppState) => state.options
+export const optionsSelector = (state: AppState) => state.options;
 
 export const getSearchIdSelector = createSelector(
   optionsSelector,
-  (options) => options.searchId
-)
+  (options) => options.searchId,
+);
 
 export const getFilterTransplantsSelector = createSelector(
   optionsSelector,
-  (options) => options.filterTransplants
-)
+  (options) => options.filterTransplants,
+);
 
 export const getSortedBySelector = createSelector(
   optionsSelector,
-  (options) => options.sortedBy
-)
+  (options) => options.sortedBy,
+);
 
 const defaultState: OptionsState = {
   filterTransplants: [],
   sortedBy: "fast",
   searchId: "",
-}
+  limit: 50,
+};
 
 const optionsSlice = createSlice({
   name: "options",
   initialState: defaultState,
   reducers: {
     setFilterTransplants(state, action) {
-      state.filterTransplants = action.payload
+      state.filterTransplants = action.payload;
     },
-    setSortedBy(state,action){
-      state.sortedBy=action.payload
-    }
+    setSortedBy(state, action) {
+      state.sortedBy = action.payload;
+    },
+    setLimit(state, action) {
+      state.limit = action.payload;
+    },
   },
   extraReducers: (builder) =>
     builder.addCase(fetchSearchId.fulfilled, (state, action) => {
       return {
         ...state,
         searchId: action.payload.searchId,
-      }
+      };
     }),
-})
+  // .addCase(fetchTickets.fulfilled, (state, action) => {
+  //   return {
+  //     ...state,
+  //     limit: state.limit + action.payload.tickets.length,
+  //   }
+  // }),
+});
 
-export const { setFilterTransplants,setSortedBy } = optionsSlice.actions
+export const { setFilterTransplants, setSortedBy, setLimit } =
+  optionsSlice.actions;
 
-export default optionsSlice
+export default optionsSlice;
