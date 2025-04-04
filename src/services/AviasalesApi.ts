@@ -9,16 +9,36 @@ export class AviasalesApi {
     searchId: string,
     { sort, transplants }: { sort: SortType; transplants: number[] },
   ): Promise<{ tickets: Tickets[]; stop: boolean }> {
-    const result: { tickets: Array<Tickets>; stop: boolean } = await fetch(
-      this.baseUrl + "/tickets?searchId=" + searchId,
-    ).then((response) => response.json());
+    let result: Array<Tickets> = [];
 
-    let filteredTickets: Array<Tickets> = this.applyFilters(result.tickets, {
-      sort,
-      transplants,
-    });
+    async function recursiveGetTickets() {
+      try {
+        const response: { tickets: Array<Tickets>; stop: boolean } =
+          await fetch(
+            AviasalesApi.baseUrl + "/tickets?searchId=" + searchId,
+          ).then((response) => response.json());
 
-    return { tickets: filteredTickets, stop: result.stop };
+        if (response.stop) {
+          return true;
+        } else {
+          result = [...result, ...response.tickets];
+          await recursiveGetTickets();
+          return false;
+        }
+      } catch (error) {
+        await recursiveGetTickets();
+        return false;
+      }
+    }
+
+    const stop = await recursiveGetTickets();
+
+    // let filteredTickets: Array<Tickets> = this.applyFilters(result, {
+    //   sort,
+    //   transplants,
+    // })
+
+    return { tickets: result, stop: stop };
   }
 
   static applyFilters(
@@ -62,11 +82,11 @@ export class AviasalesApi {
 
   static filterTickets(tickets: Array<Tickets>, transplants: number[]) {
     if (transplants.length > 0) {
-      tickets = tickets.filter((ticket) =>
-        ticket.segments.some((item) =>
+      tickets = tickets.filter((ticket) => {
+        return ticket.segments.some((item) =>
           transplants.some((option) => item.stops.length === option),
-        ),
-      );
+        );
+      });
     }
     return [...tickets];
   }

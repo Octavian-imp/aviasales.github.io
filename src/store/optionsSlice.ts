@@ -2,7 +2,6 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { AviasalesApi } from "../services/AviasalesApi";
 import { SortType } from "../types/SortedOptions";
 import { AppState, createAppAsyncThunk } from "../utils/store/redux";
-import { fetchTickets } from "./ticketsSlice";
 
 type OptionsState = {
   filterTransplants: number[];

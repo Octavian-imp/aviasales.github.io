@@ -13,10 +13,10 @@ const TicketList = () => {
     useAppSelector(optionsSelector);
   const dispatch = useAppDispatch();
 
-  const perPageLimit = 50;
+  const perPageLimit = 10;
 
   const [ticketsState, setTicketsState] = useState<Tickets[]>(
-    tickets.slice(0, 5),
+    tickets.slice(0, perPageLimit),
   );
   const ticketsDeferred = useDeferredValue(ticketsState);
 
@@ -61,7 +61,7 @@ const TicketList = () => {
         />
       ))}
       <Button type="primary" onClick={loadMore}>
-        Загрузить еще 5 билетов
+        Загрузить еще {perPageLimit} билетов
       </Button>
     </>
   );

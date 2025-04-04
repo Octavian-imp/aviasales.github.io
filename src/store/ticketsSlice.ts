@@ -10,9 +10,9 @@ import {
 
 export const ticketsSelector = (state: AppState) => state.tickets;
 
-export const getTicketsSelector = createSelector(
+export const getOriginTicketsSelector = createSelector(
   ticketsSelector,
-  (tickets) => tickets.tickets,
+  (tickets) => tickets.originTickets,
 );
 
 export const fetchTickets = createAppAsyncThunk(
@@ -21,6 +21,7 @@ export const fetchTickets = createAppAsyncThunk(
     const state = thunkApi.getState();
     const filterOptions = getFilterTransplantsSelector(state);
     const sortedByOptions = getSortedBySelector(state);
+
     const searchId = getSearchIdSelector(state);
     const response = await AviasalesApi.fetchTickets(searchId, {
       sort: sortedByOptions,
@@ -36,7 +37,7 @@ export const applyFilters = createAppAsyncThunk(
     const state = thunkApi.getState();
     const filterOptions = getFilterTransplantsSelector(state);
     const sortedByOptions = getSortedBySelector(state);
-    const tickets = getTicketsSelector(state);
+    const tickets = getOriginTicketsSelector(state);
 
     const response = AviasalesApi.applyFilters(tickets, {
       sort: sortedByOptions,
@@ -49,6 +50,7 @@ export const applyFilters = createAppAsyncThunk(
 export interface TicketsState {
   status: "pending" | "fulfilled" | "rejected";
   tickets: Array<Tickets>;
+  originTickets: Array<Tickets>;
   stop: boolean;
 }
 
@@ -56,6 +58,7 @@ const defaultState: TicketsState = {
   status: "pending",
   tickets: [],
   stop: false,
+  originTickets: [],
 };
 
 const ticketsSlice = createSlice({
@@ -73,13 +76,15 @@ const ticketsSlice = createSlice({
         status: "pending",
       }))
       .addCase(fetchTickets.fulfilled, (state, action) => {
+        const res =
+          state.tickets.length > 0
+            ? [...state.tickets, ...action.payload.tickets]
+            : action.payload.tickets;
         return {
           ...state,
           status: "fulfilled",
-          tickets:
-            state.tickets.length > 0
-              ? [...state.tickets, ...action.payload.tickets]
-              : action.payload.tickets,
+          originTickets: res,
+          tickets: res,
           stop: action.payload.stop,
         };
       })

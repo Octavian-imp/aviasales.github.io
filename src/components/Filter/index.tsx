@@ -2,7 +2,7 @@ import { Checkbox, CheckboxOptionType, CheckboxProps, Flex } from "antd";
 import Title from "antd/es/typography/Title";
 import React from "react";
 import { setFilterTransplants } from "../../store/optionsSlice";
-import { fetchTickets } from "../../store/ticketsSlice";
+import { applyFilters } from "../../store/ticketsSlice";
 import { useAppDispatch, useAppSelector } from "../../utils/store/redux";
 import styles from "./index.module.scss";
 
@@ -43,7 +43,7 @@ const Filter = () => {
 
   const onChange = (list: number[]) => {
     dispatch(setFilterTransplants(list));
-    dispatch(fetchTickets());
+    dispatch(applyFilters());
   };
 
   const onCheckAllChange: CheckboxProps["onChange"] = (e) => {
