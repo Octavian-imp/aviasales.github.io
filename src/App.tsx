@@ -1,14 +1,14 @@
 import { ConfigProvider, Flex, Image } from "antd";
 import { Content } from "antd/es/layout/layout";
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./App.module.scss";
 import Filter from "./components/Filter";
 import SortedOptions from "./components/SortedOptions";
 import TicketList from "./components/TicketList";
 import { fetchSearchId } from "./store/optionsSlice";
 import { fetchTickets } from "./store/ticketsSlice";
-import { useAppDispatch, useAppSelector } from "./utils/store/redux";
 import useOnlyEffect from "./utils/hooks/useOnlyEffect";
+import { useAppDispatch } from "./utils/store/redux";
 
 const App = () => {
   const dispatch = useAppDispatch();
