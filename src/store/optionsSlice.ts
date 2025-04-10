@@ -63,12 +63,6 @@ const optionsSlice = createSlice({
         searchId: action.payload.searchId,
       };
     }),
-  // .addCase(fetchTickets.fulfilled, (state, action) => {
-  //   return {
-  //     ...state,
-  //     limit: state.limit + action.payload.tickets.length,
-  //   }
-  // }),
 });
 
 export const { setFilterTransplants, setSortedBy, setLimit } =

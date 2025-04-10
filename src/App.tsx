@@ -7,12 +7,13 @@ import SortedOptions from "./components/SortedOptions";
 import TicketList from "./components/TicketList";
 import { fetchSearchId } from "./store/optionsSlice";
 import { fetchTickets } from "./store/ticketsSlice";
-import { useAppDispatch } from "./utils/store/redux";
+import { useAppDispatch, useAppSelector } from "./utils/store/redux";
+import useOnlyEffect from "./utils/hooks/useOnlyEffect";
 
 const App = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
+  useOnlyEffect(() => {
     const init = async () => {
       try {
         await dispatch(fetchSearchId());
@@ -23,7 +24,7 @@ const App = () => {
       }
     };
     init();
-  }, []);
+  });
 
   return (
     <ConfigProvider theme={{ hashed: false }}>

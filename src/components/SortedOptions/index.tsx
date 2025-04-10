@@ -4,7 +4,7 @@ import React from "react";
 import { getSortedBySelector, setSortedBy } from "../../store/optionsSlice";
 import { SortType } from "../../types/SortedOptions";
 import { useAppDispatch, useAppSelector } from "../../utils/store/redux";
-import { applyFilters, fetchTickets } from "../../store/ticketsSlice";
+import { applyFilters } from "../../store/ticketsSlice";
 
 const options: Array<CheckboxOptionType<SortType>> = [
   {
