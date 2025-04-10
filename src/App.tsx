@@ -30,7 +30,7 @@ const App = () => {
     <ConfigProvider theme={{ hashed: false }}>
       <Flex className={styles.app}>
         <Image
-          src="/assets/img/logo.png"
+          src="./assets/img/logo.png"
           height={60}
           width={60}
           preview={false}
