@@ -519,60 +519,28 @@ video {
   .container {
     max-width: 1536px;
   }
-}.visible {
-  visibility: visible;
-}.collapse {
-  visibility: collapse;
 }.static {
   position: static;
-}.fixed {
-  position: fixed;
-}.absolute {
-  position: absolute;
-}.relative {
-  position: relative;
 }.sticky {
   position: sticky;
 }.m-0 {
   margin: 0px;
-}.m-1 {
-  margin: 0.25rem;
 }.block {
   display: block;
-}.inline-block {
-  display: inline-block;
-}.inline {
-  display: inline;
 }.flex {
   display: flex;
-}.inline-flex {
-  display: inline-flex;
-}.table {
-  display: table;
-}.table-cell {
-  display: table-cell;
 }.hidden {
   display: none;
 }.h-fit {
   height: fit-content;
 }.w-full {
   width: 100%;
-}.transform {
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}.resize {
-  resize: both;
 }.items-center {
   align-items: center;
 }.justify-between {
   justify-content: space-between;
 }.gap-5 {
   gap: 1.25rem;
-}.self-start {
-  align-self: flex-start;
-}.self-end {
-  align-self: flex-end;
-}.border {
-  border-width: 1px;
 }.bg-\[\#F1FCFF\] {
   --tw-bg-opacity: 1;
   background-color: rgb(241 252 255 / var(--tw-bg-opacity));
@@ -591,8 +559,6 @@ video {
   font-weight: 600;
 }.uppercase {
   text-transform: uppercase;
-}.italic {
-  font-style: italic;
 }.leading-6 {
   line-height: 1.5rem;
 }.text-gray-400 {
@@ -601,29 +567,8 @@ video {
 }.text-primary {
   --tw-text-opacity: 1;
   color: rgb(33 150 243 / var(--tw-text-opacity));
-}.underline {
-  text-decoration-line: underline;
-}.line-through {
-  text-decoration-line: line-through;
-}.antialiased {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}.outline {
-  outline-style: solid;
-}.blur {
-  --tw-blur: blur(8px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}.grayscale {
-  --tw-grayscale: grayscale(100%);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }.filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }*,::after,::before{margin:0;padding:0;font-family:"Open Sans",sans-serif}.body{min-height:100vh;width:100vw;overflow-x:hidden;background-color:#f3f7fa;color:#000}
 .__app___Cl7TI{margin:50px auto 0;width:47.125rem;row-gap:3.125rem;flex-direction:column;align-items:center}.__app___Cl7TI .__contentPage___dsqmK{display:flex;width:100%;justify-content:space-between;gap:1.25rem}
 .Filter__container___Z2QvX{position:sticky;top:1rem;height:fit-content;gap:1.25rem;--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity));border-radius:.3125rem;box-shadow:0 2px 8px rgba(0,0,0,.1)}.Filter__container___Z2QvX .Filter__title___nCzzG{margin:0px;white-space:nowrap;padding-left:1.25rem;padding-right:1.25rem;padding-top:1.25rem;font-weight:600;text-transform:uppercase}.Filter__container___Z2QvX label{padding-top:.625rem;padding-bottom:.625rem;padding-left:1.25rem;padding-right:1.25rem}.Filter__container___Z2QvX label:hover{--tw-bg-opacity:1;background-color:rgb(241 252 255 / var(--tw-bg-opacity))}.Filter__container___Z2QvX .Filter__checkboxGroup___F_XrL{flex-direction:column}.Filter__container___Z2QvX .Filter__checkboxGroup___F_XrL label{padding-top:.625rem;padding-bottom:.625rem;padding-left:1.25rem;padding-right:1.25rem}.Filter__container___Z2QvX .Filter__checkboxGroup___F_XrL label:hover{--tw-bg-opacity:1;background-color:rgb(241 252 255 / var(--tw-bg-opacity))}
