@@ -27,7 +27,6 @@ export const fetchTickets = createAppAsyncThunk(
       sort: sortedByOptions,
       transplants: filterOptions,
     });
-    console.log(response.tickets.length);
 
     return response;
   },

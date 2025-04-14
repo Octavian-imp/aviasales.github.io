@@ -1,10 +1,10 @@
 import { Radio } from "antd";
 import { CheckboxOptionType } from "antd/es/checkbox";
-import React from "react";
+import React, { useEffect } from "react";
 import { getSortedBySelector, setSortedBy } from "../../store/optionsSlice";
+import { applyFilters, ticketsSelector } from "../../store/ticketsSlice";
 import { SortType } from "../../types/SortedOptions";
 import { useAppDispatch, useAppSelector } from "../../utils/store/redux";
-import { applyFilters } from "../../store/ticketsSlice";
 
 const options: Array<CheckboxOptionType<SortType>> = [
   {
@@ -24,6 +24,11 @@ const options: Array<CheckboxOptionType<SortType>> = [
 const SortedOptions = () => {
   const dispatch = useAppDispatch();
   const defaultValue = useAppSelector(getSortedBySelector);
+  const { originTickets } = useAppSelector(ticketsSelector);
+
+  useEffect(() => {
+    dispatch(applyFilters());
+  }, [originTickets.length]);
 
   return (
     <Radio.Group

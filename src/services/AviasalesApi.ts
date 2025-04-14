@@ -18,13 +18,19 @@ export class AviasalesApi {
             AviasalesApi.baseUrl + "/tickets?searchId=" + searchId,
           ).then((response) => response.json());
 
-        if (response.stop) {
-          return true;
-        } else {
+        // if (response.stop) {
+        //   return true
+        // } else {
+        //   result = [...result, ...response.tickets]
+        //   await recursiveGetTickets()
+        //   return true
+        // }
+
+        if (!response.stop) {
           result = [...result, ...response.tickets];
-          await recursiveGetTickets();
-          return false;
+          // await recursiveGetTickets()
         }
+        return response.stop;
       } catch (error) {
         await recursiveGetTickets();
         return false;

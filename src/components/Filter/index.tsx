@@ -1,8 +1,8 @@
 import { Checkbox, CheckboxOptionType, CheckboxProps, Flex } from "antd";
 import Title from "antd/es/typography/Title";
-import React from "react";
+import React, { useEffect } from "react";
 import { setFilterTransplants } from "../../store/optionsSlice";
-import { applyFilters } from "../../store/ticketsSlice";
+import { applyFilters, ticketsSelector } from "../../store/ticketsSlice";
 import { useAppDispatch, useAppSelector } from "../../utils/store/redux";
 import styles from "./index.module.scss";
 
@@ -31,6 +31,7 @@ const plainOptions: Array<PlainType> = [
 
 const Filter = () => {
   const dispatch = useAppDispatch();
+  const { originTickets } = useAppSelector(ticketsSelector);
 
   const checkedListState = useAppSelector(
     (state) => state.options.filterTransplants,
@@ -41,6 +42,9 @@ const Filter = () => {
     checkedListState.length > 0 &&
     checkedListState.length < plainOptions.length;
 
+  useEffect(() => {
+    dispatch(applyFilters());
+  }, [originTickets.length]);
   const onChange = (list: number[]) => {
     dispatch(setFilterTransplants(list));
     dispatch(applyFilters());

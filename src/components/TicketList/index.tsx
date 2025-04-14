@@ -36,10 +36,6 @@ const TicketList = () => {
     }
   }
 
-  if (status === "pending") {
-    return <Spin size="large" />;
-  }
-
   if (status === "rejected") {
     return (
       <Alert
@@ -50,8 +46,12 @@ const TicketList = () => {
       />
     );
   }
+  if (ticketsDeferred.length === 0) {
+    return <Alert message="Ничего не найдено" type="info" />;
+  }
   return (
     <>
+      {status === "pending" && <Spin size="large" />}
       {ticketsDeferred.map((ticket) => (
         <TicketCard
           key={uuidv4()}
